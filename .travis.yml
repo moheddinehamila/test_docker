@@ -3,18 +3,18 @@ services:
   - docker:
   
 before_install:
-  - docker build -t travis/test -f ./client/dockerfile.dev ./client
+  - docker build -t 50350423/test -f ./client/dockerfile.dev ./client
   
 script: 
-  - docker run travis/test npm test -- --coverage
+  - docker run 50350423/test npm test -- --coverage
   
 after success:
-  - docker build -t travis/client ./client
-  - docker build -t travis/nginx ./nginx
-  - docker build -t travis/server ./server
-  - docker build -t travis/worker ./worker
+  - docker build -t 50350423/client ./client
+  - docker build -t 50350423/nginx ./nginx
+  - docker build -t 50350423/server ./server
+  - docker build -t 50350423/worker ./worker
   - echo "$docker_mdp" | docker login -u "$dockerid" --password-stdin
-  - docker push travis/client
-  - docker push travis/nginx
-  - docker push travis/server
-  - docker push travis/worker
+  - docker push 50350423/client
+  - docker push 50350423/nginx
+  - docker push 50350423/server
+  - docker push 50350423/worker
